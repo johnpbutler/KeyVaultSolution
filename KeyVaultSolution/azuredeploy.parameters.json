@@ -2,5 +2,22 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "location": {
+      "value": "westeurope"
+    },
+    "resourcegroupName": {
+      "value": "ws1rg-rg-prod-fso"
+    },
+    "subscriptionId": {
+      "value": "194c9686-c3a0-448f-8ef3-cd0cb625210c"
+    },
+    "workspaceName": {
+      "value": "WS1-WS1rg-prod-fso"
+    },
+    "solutionTypes": {
+      "value": [
+        "KeyVaultAnalytics"
+      ]
+    }
   }
 }
