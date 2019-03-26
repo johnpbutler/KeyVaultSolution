@@ -18,6 +18,11 @@
       "value": [
         "KeyVaultAnalytics"
       ]
+    },
+    "solutionTypes2": {
+      "value": [
+        "Office365"
+      ]
     }
   }
 }

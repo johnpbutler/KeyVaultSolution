@@ -21,6 +21,10 @@
     "solutionTypes": {
       "type": "array",
       "defaultValue": []
+    },
+    "solutionTypes2": {
+      "type": "array",
+      "defaultValue": []
     }
   },
   "resources": [
@@ -42,6 +46,26 @@
       "copy": {
         "name": "solutionsCopy",
         "count": "[length(parameters('solutionTypes'))]"
+      }
+    },
+    {
+      "apiVersion": "2015-11-01-preview",
+      "type": "Microsoft.OperationsManagement/solutions",
+      "location": "[parameters('location')]",
+      "name": "[Concat(parameters('solutionTypes2')[copyIndex()], '(', parameters('workspaceName'), ')')]",
+      "id": "[Concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourcegroupName'), '/providers/Microsoft.OperationsManagement/solutions/', parameters('solutionTypes2')[copyIndex()], '(', parameters('workspaceName'), ')')]",
+      "properties": {
+        "workspaceResourceId": "[Concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourcegroupName'), '/providers/Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+      },
+      "plan": {
+        "name": "[Concat(parameters('solutionTypes2')[copyIndex()], '(', parameters('workspaceName'), ')')]",
+        "product": "[Concat('OMSGallery/', parameters('solutionTypes2')[copyIndex()])]",
+        "promotionCode": "",
+        "publisher": "Microsoft"
+      },
+      "copy": {
+        "name": "solutionsCopy",
+        "count": "[length(parameters('solutionTypes2'))]"
       }
     }
   ]
